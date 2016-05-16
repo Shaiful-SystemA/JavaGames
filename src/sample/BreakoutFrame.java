@@ -75,7 +75,79 @@ public class BreakoutFrame extends JFrame {
             add(quitMI);
 
 
-
         }
     }
+
+    private class ColorMenu extends JMenu{
+
+        public ColorMenu(){
+            super("Ball Color");
+            for(BallColor color: BallColor.value()){
+                JMenuItem menuItem = new JMenuItem(color.name() + "Ball");
+                menuItem.addActionListener(new BallColorListener(color));
+                add(menuItem);
+            }
+        }
+
+    }
+
+    private  class BallColorListener implements ActionListener{
+        private BallColor color;
+
+        public  void actionPerformed(ActionListener e){
+            panel.changeBallColor(color);
+        }
+        public BallColorListener(BallColor color){
+            this.color = color;
+        }
+
+    }
+
+    private class SpeedMenu extends JMenu{
+        public SpeedMenu(){
+            super("Ball Speed");
+            for(BallSpeed s:BallSpeed.value()){
+                JMenuItem  menuItem = JMenuItem(s.name());
+                menuItem.addActionListener(new BallSpeedListener(s.speed()));
+                add(menuItem);
+            }
+        }
+    }
+
+    private class BallSpeedListener implements ActionListener{
+        private int speeed;
+        public void actionPerformed(ActionEvent e){
+            panel.changeBallSpeed(speed);
+        }
+        public BallSpeedListener(int speed){
+            this.speed = speed;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

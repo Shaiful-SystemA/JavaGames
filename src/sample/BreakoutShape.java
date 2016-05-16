@@ -15,10 +15,11 @@ public class BreakoutShape{
 
 
 
-    public BreakoutShape(Color color, boolean fill, RectangularShape shape) {
+    public BreakoutShape( RectangularShape shape,Color color, boolean fill) {
+
+        this.shape = shape;
         this.color = color;
         this.fill = fill;
-        this.shape = shape;
     }
 
     public Color getColor() {
@@ -26,6 +27,7 @@ public class BreakoutShape{
     }
 
     public void changeColor(Color color){
+
         this.color=color;
     }
 

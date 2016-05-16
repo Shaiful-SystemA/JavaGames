@@ -16,6 +16,7 @@ public class BreakoutPanel extends JPanel{
     private javax.swing.Timer timer;
     private Ball ball;
     private Paddle paddle;
+    private boolean gameStarted = false;
 
     private Player player =  new Player();
 
@@ -159,7 +160,112 @@ public class BreakoutPanel extends JPanel{
         }
     }
 
+
+    public void start(){
+
+       gameStarted = true;
+        if(timer !=null){
+            timer.stop();
+        }
+        if (!player.isAlive()){
+            player = new Player(); //restart the game
+            ball = new Ball(Color.RED, this);
+        }
+        timer = new javax.swing..Timer(BallSpeed.Normal.speed(),new BreakoutPanel.TimeListerner());
+        timer.start();
+        repaint();
+
     }
+
+    public void pause(){
+        if(timer = null){
+            return;
+        }
+        timer.stop();
+    }
+
+    public void changeBallColor(BallColor color){
+        ball.changeColor(color.color());
+        repaint();
+    }
+
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+
+        if(!player.isAlive(){
+            showMessage("Game Over", g2);
+            gameStarted = false;
+
+        } else{
+            ball.draw(g2);
+            paddle.draw(g2);
+        }
+        if(gameStarted){
+            player.draw(g2);
+        }
+
+    }
+
+    public void changeBallSpeed(int speed){
+        timer.setDelay(speed);
+    }
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
